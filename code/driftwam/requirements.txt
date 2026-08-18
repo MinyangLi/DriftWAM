@@ -1,0 +1,39 @@
+# Versions verified working in the `lingbot-distill` conda env (python 3.10).
+# driftwam is not installed; it is imported from the repo root via sys.path.
+# Flash-WAM is reached through driftwam.bootstrap, not pip.
+
+# --- core ---
+torch==2.9.0+cu128            # flex_attention / BlockMask required
+torchvision==0.24.0+cu128
+numpy==2.2.6
+einops==0.8.2
+easydict==1.13                # Flash-WAM configs are EasyDict
+
+# --- model loading ---
+diffusers==0.36.0             # ModelMixin/ConfigMixin, AutoencoderKLWan for VAE decode
+safetensors==0.8.0
+accelerate==1.14.0
+huggingface-hub==0.36.2
+
+# DINOv3 (`model_type: dinov3_vit`) needs >= 4.56.0; 4.55.2 raises
+# KeyError: 'dinov3_vit'. Pinned to the last 4.x to avoid 5.x API churn.
+transformers==4.57.6
+
+# --- dataset ---
+lerobot==0.3.3                # CODEBASE_VERSION v2.1 layout
+datasets==3.6.0               # lerobot pins <=3.6.0
+pandas==2.3.3
+pyarrow==25.0.1
+av==17.1.0                    # lerobot.datasets.video_utils imports this at module
+                              # level, so it is required even though we only ever
+                              # read pre-encoded latents. torchcodec is NOT needed:
+                              # it is not a module-level import, and its <0.6 pin
+                              # has no build for torch 2.9.
+
+# --- reporting ---
+matplotlib==3.10.9
+
+# Not installable here and not required: flash_attn. Flash-WAM's model.py does a
+# top-level `import flash_attn_interface`; distillation/patches.py installs a stub
+# for it, and driftwam.bootstrap calls that stub before importing modules.model.
+# The stub is irrelevant to attention itself, which goes through flex_attention.
