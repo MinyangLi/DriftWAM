@@ -1,0 +1,76 @@
+{
+  "device": "cpu",
+  "scope": "tiny native transformers; production cached inference control flow unchanged",
+  "reports": [
+    {
+      "source": "lingbot-va/wan_va/modules/model.py",
+      "old_sha256": "b0e65d1f7df055f2b7d1b2d77b7de34b540e70414bb48f355ee3f43aabe4ff42",
+      "new_sha256": "f4c13b1a052fafec1e48ffbe236895b7de26e6102514faf3ef775cc7bd95c8a3",
+      "checks": [
+        {
+          "dtype": "torch.float32",
+          "action_steps": 50,
+          "input_gradient": false,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0
+        },
+        {
+          "dtype": "torch.float32",
+          "action_steps": 1,
+          "input_gradient": true,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0.0
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "action_steps": 50,
+          "input_gradient": false,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "action_steps": 1,
+          "input_gradient": true,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0.0
+        }
+      ]
+    },
+    {
+      "source": "Flash-WAM/wan_va/modules/model.py",
+      "old_sha256": "b654f6745107e2763c55465471ecefcc90149b39f6b5e3e1c6730464a85b107d",
+      "new_sha256": "99766670d9a91bc2158bfc5c270021fb0a3ad0c71760a8741e2195280237607d",
+      "checks": [
+        {
+          "dtype": "torch.float32",
+          "action_steps": 50,
+          "input_gradient": false,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0
+        },
+        {
+          "dtype": "torch.float32",
+          "action_steps": 1,
+          "input_gradient": true,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0.0
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "action_steps": 50,
+          "input_gradient": false,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0
+        },
+        {
+          "dtype": "torch.bfloat16",
+          "action_steps": 1,
+          "input_gradient": true,
+          "max_output_error": 0.0,
+          "max_gradient_error": 0.0
+        }
+      ]
+    }
+  ]
+}
